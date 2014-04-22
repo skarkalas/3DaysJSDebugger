@@ -349,45 +349,32 @@ Debugger.color = function(red, green, blue)
 
 
 /*
-**	public methods
-**	==============
-**	background()
-**	clear()
-**	fill(r,g,b)
-**	addGradientColor(red,green,blue,stop)
-**	resetGradientColors()
-**	fillGradient(x1,y2,[r1],x2,y2,[r2])
-**	noFill()
-**	stroke(r,g,b)
-**	strokeWeight(size)
-**	noStroke()
-**	rect(x,y,width,height)
-**	dot(x,y);
-**	circle(centrex,centrey,radius)
-**	ellipse(centrex,centrey,width,height)
-**	triangle(x1,y1,x2,y2,x3,y3)
-**	bezier(x1,y1,cx1,cy1,cx2,cy2,x2,y2)
-**	line(x1,y1,x2,y2)
-**	font(family,size,style)
-**	text(text,x,y)
-**	image(url,x,y)
+**	public member methods
+**	=====================
+**	isFunctional()
+**	log(object[, object, ...])
+**	debug(object[, object, ...])
+**	info(object[, object, ...])
+**	warn(object[, object, ...])
+**	error(object[, object, ...])
+**	assert(object[, object, ...])
+**	dir(object)
+**	dirxml(object)
+**	trace()
+**	time(string)
+**	timeEnd(string)
+**	timeStamp(string)
+**	count(string)
+**	table(object)
+**
+**	public static methods
+**	=====================
+**	numberInRange(number, number, number)
+**	table(object)
+**	number(number)
+**	string(string)
+**  FUNCTIONreference(object)
+**  POJOreference(object)
+**  HTMLreference(object)
+**  color(number, number, number)
 **/
-
-
-/*
-	draw a line
-	-----------
-	graphics.stroke(50,60,80);
-	graphics.line(20,20,50,60);
-
-	draw a rectangle
-	----------------
-	graphics.fill(50,60,80);
-	graphics.rect(20,20,50,60);
-
-	draw some text
-	--------------
-	graphics.fill(50,60,80);
-	graphics.font('times new roman',50,'italic');
-	graphics.text('sokratis',20,30);
-*/

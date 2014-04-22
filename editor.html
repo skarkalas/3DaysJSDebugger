@@ -3,29 +3,50 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="author" content="Sokratis Karkalas">  
-	<title>3 Days JS Debugger</title>
-	<script type="text/javascript" charset="utf-8" src="./scripts/debugger.js"></script> 
-	<script type="text/javascript" charset="utf-8" src="./scripts/editor.js"></script> 
-<script>
-function test()
-{
-	var input = document.getElementById('input').value;
-	eval(input);
-}
-</script>
+	<title>3 Days JS Debugger Test Runner</title>
+	<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.14.0.css">
 </head>
 
 <body>
 
-<textarea id="output" style="border:1px solid #000000;width:600px;height:300px;padding:0"></textarea>
+	<div id="qunit"></div>
+	<div id="qunit-fixture"></div>
+	<script type="text/javascript" charset="utf-8" src="http://code.jquery.com/qunit/qunit-1.14.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./scripts/debugger.js"></script> 
+	<script type="text/javascript" charset="utf-8" src="./scripts/editor.js"></script> 
 
-<br/>
+<script>
 
-<textarea id="input" style="border:1px solid #000000;width:600px;height:300px;padding:0"></textarea>
+var debug=null;
 
-<br/>
+module
+(
+	"Testing Module: Debugger",
+	{
+		setup: function()
+		{
+			//setup a debugger object
+			debug=new Debugger();
+		},
+		teardown: function()
+		{
+			//remove the debugger object
+			delete debug;
+		}
+	}
+);
 
-<input type='button' value='draw' onclick='test()'></input>
+test
+(
+	"testing method isFunctional()",
+	function()
+	{
+		// assertions go here...
+		equal(debug.isFunctional(), true, "the debugger must be functional");
+	}
+);
+
+</script>
 
 </body>
 </html>

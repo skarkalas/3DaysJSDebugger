@@ -1,3 +1,4 @@
+/*
 var debug=null;
 
 window.onload = function()
@@ -5,3 +6,5 @@ window.onload = function()
 	//setup graphics object
 	debug=new Debugger();
 }
+
+*/
