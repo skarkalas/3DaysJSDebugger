@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="author" content="Sokratis Karkalas">  
+	<title>3 Days JS Graphics</title>
+	<script type="text/javascript" charset="utf-8" src="./scripts/graphics.js"></script> 
+	<script type="text/javascript" charset="utf-8" src="./scripts/editor.js"></script> 
+<script>
+function display()
+{
+	var text = document.getElementById('text').value;
+	eval(text);
+}
+</script>
+</head>
+
+<body>
+
+<canvas id="canvas" width="600px" height="500px" style="border:1px solid #000000;"></canvas>
+
+<br/>
+
+<textarea id="text" style="border:1px solid #000000;width:600px;height:200px;padding:0"></textarea>
+
+<br/>
+
+<input type='button' value='draw' onclick='display()'></input>
+
+</body>
+</html>
