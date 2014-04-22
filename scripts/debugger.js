@@ -10,15 +10,14 @@ function Debugger()
 	
 	//initialisation function - executed only once
 	(
-		function()
+		function(object)
 		{
-			if (typeof(console) !== "undefined")
+			if (typeof console !== "undefined")
 			{
-				this.console = console;
-				return;
+				object.console = console;
 			}
 		}
-	)();
+	)(this);
 
 	//member methods
 	//========================================================
@@ -27,23 +26,23 @@ function Debugger()
 		return this.console !== null;
 	}
 
-	//handles errors
-	this.error = function(error)
+	//handles logging
+	this.log = function()
 	{
 		if(this.isFunctional() === false)
 		{
 			throw new Error('Debugger is not functional');
 		}
 		
-		if(error instanceof Error === false)
+		if(typeof this.console.log !== 'function')
 		{
-			throw new Error('error handler was called with a non-error parameter');
+			throw new Error('log is not a function');
 		}
-		
-		console.error("(Debugger) Error type: %s ==> Error message: %s", error.name, error.message);
+
+		this.console.log.apply(this.console, arguments);
 	}
 
-	//handles debug messages
+	//handles debugging
 	this.debug = function()
 	{
 		if(this.isFunctional() === false)
@@ -51,109 +50,209 @@ function Debugger()
 			throw new Error('Debugger is not functional');
 		}
 		
-		if(error instanceof Error === false)
+		if(typeof this.console.debug !== 'function')
 		{
-			throw new Error('error handler was called with a non-error parameter');
+			throw new Error('debug is not a function');
+		}
+
+		this.console.debug.apply(this.console, arguments);
+	}
+	
+	//handles info messages
+	this.info = function()
+	{
+		if(this.isFunctional() === false)
+		{
+			throw new Error('Debugger is not functional');
 		}
 		
-		console.error("(Debugger) Error type: %s ==> Error message: %s", error.name, error.message);
-	}
-	
-Debugger.message=function()
-{
-	if (typeof console!=="undefined")
-	{
-		for(var i=0;i<arguments.length;i++)
+		if(typeof this.console.info !== 'function')
 		{
-			var argument=arguments[i];
-			var specifier=Graphics.format(argument);
-			
-			if(specifier!==null)
-			{
-				console.info('(Graphics) '+specifier,argument);
-			}
+			throw new Error('info is not a function');
 		}
+		
+		this.console.info.apply(this.console, arguments);
 	}
-}
+
+	//handles warning messages
+	this.warn = function()
+	{
+		if(this.isFunctional() === false)
+		{
+			throw new Error('Debugger is not functional');
+		}
+		
+		if(typeof this.console.warn !== 'function')
+		{
+			throw new Error('warn is not a function');
+		}
+		
+		this.console.warn.apply(this.console, arguments);
+	}
+
+	//handles error messages
+	this.error = function()
+	{
+		if(this.isFunctional() === false)
+		{
+			throw new Error('Debugger is not functional');
+		}
+		
+		if(typeof this.console.error !== 'function')
+		{
+			throw new Error('error is not a function');
+		}
+
+		this.console.error.apply(this.console, arguments);
+	}
+
+	//handles assertions
+	this.assert = function()
+	{
+		if(this.isFunctional() === false)
+		{
+			throw new Error('Debugger is not functional');
+		}
+		
+		if(typeof this.console.assert !== 'function')
+		{
+			throw new Error('assert is not a function');
+		}
+
+		this.console.assert.apply(this.console, arguments);
+	}
 	
+	//prints an interactive listing of the argument's properties
+	this.dir = function()
+	{
+		if(this.isFunctional() === false)
+		{
+			throw new Error('Debugger is not functional');
+		}
+		
+		if(typeof this.console.dir !== 'function')
+		{
+			throw new Error('dir is not a function');
+		}
+
+		this.console.dir.apply(this.console, arguments);
+	}
 	
+	//prints an interactive tree based on the argument's structure
+	this.dirxml = function()
+	{
+		if(this.isFunctional() === false)
+		{
+			throw new Error('Debugger is not functional');
+		}
+		
+		if(typeof this.console.dirxml !== 'function')
+		{
+			throw new Error('dirxml is not a function');
+		}
+
+		this.console.dirxml.apply(this.console, arguments);
+	}
+
+	//details the functions on the stack, as well as the values that were passed as arguments to each function
+	this.trace = function()
+	{
+		if(this.isFunctional() === false)
+		{
+			throw new Error('Debugger is not functional');
+		}
+		
+		if(typeof this.console.trace !== 'function')
+		{
+			throw new Error('trace is not a function');
+		}
+
+		this.console.trace.apply(this.console);
+	}
+
+	//creates a new timer under the given name
+	this.time = function()
+	{
+		if(this.isFunctional() === false)
+		{
+			throw new Error('Debugger is not functional');
+		}
+		
+		if(typeof this.console.time !== 'function')
+		{
+			throw new Error('time is not a function');
+		}
+
+		this.console.time.apply(this.console, arguments);
+	}
 	
-	
-	
+	//stops the timer with the given name
+	this.timeEnd = function()
+	{
+		if(this.isFunctional() === false)
+		{
+			throw new Error('Debugger is not functional');
+		}
+		
+		if(typeof this.console.timeEnd !== 'function')
+		{
+			throw new Error('timeEnd is not a function');
+		}
+
+		this.console.timeEnd.apply(this.console, arguments);
+	}
+
+	//adds an entry to the timeline during a recording session
+	this.timeStamp = function()
+	{
+		if(this.isFunctional() === false)
+		{
+			throw new Error('Debugger is not functional');
+		}
+		
+		if(typeof this.console.timeStamp !== 'function')
+		{
+			throw new Error('timeStamp is not a function');
+		}
+
+		this.console.timeStamp.apply(this.console, arguments);
+	}
+
+	//writes the number of times that the code that contains this line was executed
+	this.count = function()
+	{
+		if(this.isFunctional() === false)
+		{
+			throw new Error('Debugger is not functional');
+		}
+		
+		if(typeof this.console.count !== 'function')
+		{
+			throw new Error('count is not a function');
+		}
+
+		this.console.count.apply(this.console, arguments);
+	}
+
+	//logs provided data using tabular layout
+	this.table = function()
+	{
+		if(this.isFunctional() === false)
+		{
+			throw new Error('Debugger is not functional');
+		}
+		
+		if(typeof this.console.table !== 'function')
+		{
+			throw new Error('table is not a function');
+		}
+
+		this.console.table.apply(this.console, arguments);
+	}
 }
 
 //non-member (static) methods
 //============================================================
-
-//accepts the list of arguments from another function, detects the type of arguments
-//and enhances the list with the corresponding specifiers
-Debugger.enhanceArguments = function(args)
-{
-	if(typeof args !== 'object')
-	{
-		return null;
-	}
-	
-	if(typeof args.length === 'undefined')
-	{
-		return null;
-	}
-
-	var enhancedArgs = [];
-	
-	for(var arg in args)
-	{
-		var object = {};
-		object.argument = args[arg];
-		object.specifier = Debugger.format(argument);
-		enhancedArgs.push(object);	
-	}
-	
-	return enhancedArgs;
-}
-
-//accepts a piece of data and returns the format specifier that corresponds to its type
-Debugger.format = function(data)
-{
-	//%s string, %d%i integer, %f float, %o dom object, %O POJO, %c css
-	var type = typeof data;
-	var specifier = null;
-
-	//if there is no argument return null
-	if(type === 'undefined')
-	{
-		return null;
-	}
-	
-	if(type === 'number')
-	{
-		if(data % 1 === 0)
-		{
-			specifier = '%i';				//integer
-		}
-		else
-		{
-			specifier = '%f';				//real
-		}
-	}
-	else if(type === 'string')
-	{
-		specifier = '%s';					//string
-	}
-	else if(type === 'object')
-	{
-		if(data instanceof HTMLElement)
-		{
-			specifier = '%o';				//dom
-		}
-		else
-		{
-			specifier = '%O';				//POJO
-		}
-	}
-	
-	return specifier;
-}
 
 //performs input validation for numeric values that have to be within the given range
 Debugger.numberInRange = function(value, from, to)
@@ -242,7 +341,6 @@ Debugger.color = function(red, green, blue)
 	}
 	catch(error)
 	{
-		Debugger.error(error);
 		throw new TypeError('color: invalid parameters, rgb values nust be within the range 0-255');
 	}
 

@@ -1,8 +1,7 @@
-var graphics=null;
+var debug=null;
 
 window.onload = function()
 {
 	//setup graphics object
-	graphics=new Graphics();
-	graphics.init('canvas');
+	debug=new Debugger();
 }
