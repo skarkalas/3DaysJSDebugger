@@ -257,15 +257,9 @@ function Debugger()
 //performs input validation for numeric values that have to be within the given range
 Debugger.numberInRange = function(value, from, to)
 {
-	var valid = true;
-	valid = valid && typeof value === 'number';
-	valid = valid && typeof from === 'number';
-	valid = valid && typeof to === 'number';	
-
-	if(valid === false)
-	{
-		throw new TypeError('numberInRange: parameters must be numeric');
-	}
+	Debugger.number(value);
+	Debugger.number(from);
+	Debugger.number(to);
 
 	if(value < from || value > to)
 	{
@@ -335,9 +329,9 @@ Debugger.color = function(red, green, blue)
 {
 	try
 	{
-		Debugger.number(red, 0, 255);
-		Debugger.number(green, 0, 255);
-		Debugger.number(blue, 0, 255);
+		Debugger.numberInRange(red, 0, 255);
+		Debugger.numberInRange(green, 0, 255);
+		Debugger.numberInRange(blue, 0, 255);
 	}
 	catch(error)
 	{
@@ -370,7 +364,6 @@ Debugger.color = function(red, green, blue)
 **	public static methods
 **	=====================
 **	numberInRange(number, number, number)
-**	table(object)
 **	number(number)
 **	string(string)
 **  FUNCTIONreference(object)

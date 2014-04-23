@@ -46,6 +46,359 @@ test
 	}
 );
 
+test
+(
+	"testing method numberInRange()",
+	function()
+	{
+		// assertions go here...
+		expect(6);
+		var actual = null;
+		var message = null;
+		var value = 5;
+		var expected = 5;
+		var from = 0;
+		var to = 10;
+		message = 'numberInRange(' + value + ',' + from + ',' + to + ') is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.numberInRange(value, from, to);
+			equal(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+
+		value = 5;
+		expected = 5;
+		from = 5;
+		to = 10;
+		message = 'numberInRange(' + value + ',' + from + ',' + to + ') is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.numberInRange(value, from, to);
+			equal(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+
+		value = 5;
+		expected = 5;
+		from = 0;
+		to = 5;
+		message = 'numberInRange(' + value + ',' + from + ',' + to + ') is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.numberInRange(value, from, to);
+			equal(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+
+		value = 0;
+		expected = 0;
+		from = -5;
+		to = 10;
+		message = 'numberInRange(' + value + ',' + from + ',' + to + ') is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.numberInRange(value, from, to);
+			equal(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+
+		value = -7;
+		expected = -7;
+		from = -10;
+		to = -5;
+		message = 'numberInRange(' + value + ',' + from + ',' + to + ') is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.numberInRange(value, from, to);
+			equal(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+
+		value = '5';
+		expected = undefined;
+		from = 0;
+		to = 10;
+		message = 'numberInRange(' + value + ',' + from + ',' + to + ') is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.numberInRange(value, from, to);
+			equal(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+	}
+);
+
+test
+(
+	"testing method number()",
+	function()
+	{
+		// assertions go here...
+		expect(2);
+		var actual = null;
+		var message = null;
+		var value = 5;
+		var expected = 5;
+		message = 'number(' + value + ') is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.number(value);
+			equal(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+
+		value = '5';
+		expected = undefined;
+		message = 'number("' + value + '") is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.number(value);
+			equal(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+	}
+);
+
+test
+(
+	"testing method string()",
+	function()
+	{
+		// assertions go here...
+		expect(2);
+		var actual = null;
+		var message = null;
+		var value = 5;
+		var expected = undefined;
+		message = 'string(' + value + ') is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.string(value);
+			equal(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+
+		value = '5';
+		expected = '5';
+		message = 'string("' + value + '") is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.string(value);
+			equal(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+	}
+);
+
+test
+(
+	"testing method FUNCTIONreference()",
+	function()
+	{
+		// assertions go here...
+		expect(2);
+		var actual = null;
+		var message = null;
+		var value = function(arg){return arg;};
+		var expected = function(arg){return arg;};
+		message = 'FUNCTIONreference(' + value + ') is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.FUNCTIONreference(value);
+			equal(actual.toString(), expected.toString(), message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+
+		value = {};
+		expected = undefined;
+		message = 'FUNCTIONreference("' + value + '") is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.FUNCTIONreference(value);
+			equal(actual.toString(), expected.toString(), message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+	}
+);
+
+test
+(
+	"testing method POJOreference()",
+	function()
+	{
+		// assertions go here...
+		expect(2);
+		var actual = null;
+		var message = null;
+		var value = {a:5,b:'test'};
+		var expected = {a:5,b:'test'};
+		message = 'POJOreference(' + value + ') is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.POJOreference(value);
+			deepEqual(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+
+		value = function(){return 1;};
+		expected = undefined;
+		message = 'POJOreference("' + value + '") is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.POJOreference(value);
+			deepEqual(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+	}
+);
+
+test
+(
+	"testing method HTMLreference()",
+	function()
+	{
+		// assertions go here...
+		expect(2);
+		var actual = null;
+		var message = null;
+		var button = document.createElement("button");
+		var caption = document.createTextNode("click me");
+		button.appendChild(caption);
+		var value = button;
+		button = document.createElement("button");
+		caption = document.createTextNode("click me");
+		button.appendChild(caption);
+		var expected = button;
+		message = 'HTMLreference(' + value + ') is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.HTMLreference(value);
+			deepEqual(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+
+		button = document.createElement("button");
+		caption = document.createTextNode("click me");
+		button.appendChild(caption);
+		value = {};
+		expected = undefined;
+		message = 'HTMLreference("' + value + '") is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.HTMLreference(value);
+			deepEqual(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+	}
+);
+
+test
+(
+	"testing method color()",
+	function()
+	{
+		// assertions go here...
+		expect(2);
+		var actual = null;
+		var message = null;
+		var red = 5;
+		var green = 240;
+		var blue = 80;
+		var expected = 'rgb(' + red + ',' + green + ',' + blue + ')';
+		message = 'color(' + red + ',' + green + ',' + blue + ') is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.color(red, green, blue);
+			equal(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+
+		var red = -5;
+		var green = 240;
+		var blue = 80;
+		expected = undefined;
+		message = 'color(' + red + ',' + green + ',' + blue + ') is ok';
+		try
+		{
+			actual = undefined;
+			actual = Debugger.color(red, green, blue);
+			equal(actual, expected, message);
+		}
+		catch(e)
+		{
+			QUnit.push(false, actual, expected, e.message);
+		}
+	}
+);
 </script>
 
 </body>
